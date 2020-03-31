@@ -40,11 +40,11 @@ func TestHandleFib(t *testing.T) {
 			want: []byte("2"),
 		},
 
-		/*{
+		{
 			name: "minus",
 			num:  -3,
-			want: []byte("2"),
-		},*/
+			want: []byte("-3"),
+		},
 	}
 
 	handler := http.HandlerFunc(handleFib)
@@ -55,7 +55,9 @@ func TestHandleFib(t *testing.T) {
 			req, _ := http.NewRequest("GET", fmt.Sprintf("/fib?num=%d", tc.num), nil)
 			handler.ServeHTTP(rec, req)
 			assert.Equal(t, tc.want, rec.Body.Bytes())
-			assert.NotEqual(t, tc.)
+			assert.NotEqual(t, tc.name, rec.Body.Bytes())
+			
+
 		})
 	}
 }
