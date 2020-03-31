@@ -56,8 +56,26 @@ func TestHandleFib(t *testing.T) {
 			handler.ServeHTTP(rec, req)
 			assert.Equal(t, tc.want, rec.Body.Bytes())
 			assert.NotEqual(t, tc.name, rec.Body.Bytes())
-			
 
+		})
+	}
+}
+
+func Test_handleFib(t *testing.T) {
+	type args struct {
+		w http.ResponseWriter
+		r *http.Request
+	}
+	tests := []struct {
+		name string
+		args args
+	}{
+		
+		// TODO: Add test cases.
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			handleFib(tt.args.w, tt.args.r)
 		})
 	}
 }
